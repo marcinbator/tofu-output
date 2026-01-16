@@ -1,8 +1,9 @@
 name: Export Tofu output
 description: Export encoded Tofu output to GITHUB_OUTPUT
 author: marcinbator
-icon: arrow-down
-color: purple
+branding:
+  icon: arrow-down
+  color: purple
 
 inputs:
   workdir:
