@@ -54,7 +54,7 @@ jobs:
 
       - id: output
         name: Output TF vars
-        uses: marcinbator/tofu-output@1.0.0
+        uses: marcinbator/tofu-output@v1.0.0
         with:
           workdir: ${{ env.WORKDIR }}
 ```
