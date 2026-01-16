@@ -1,0 +1,24 @@
+name: Export Tofu output
+description: Export encoded Tofu output to GITHUB_OUTPUT
+author: marcinbator
+
+inputs:
+  workdir:
+    required: true
+    description: Tofu working directory
+
+outputs:
+  tf_outputs:
+    description: Base64 encoded tofu outputs in json format
+    value: ${{ steps.export.outputs.tf_outputs }}
+
+runs:
+  using: composite
+  steps:
+    - id: export
+      shell: bash
+      run: |
+        cd "${{ inputs.workdir }}"
+
+        OUTPUT_JSON=$(tofu output -json | base64 -w 0 | base64 -w 0)
+        echo "tf_outputs=$OUTPUT_JSON" >> "$GITHUB_OUTPUT"
